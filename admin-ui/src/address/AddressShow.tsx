@@ -45,6 +45,7 @@ export const AddressShow = (props: ShowProps): React.ReactElement => {
             >
               <TextField source={ADDRESS_TITLE_FIELD} />
             </ReferenceField>
+            <TextField label="customer type" source="customerType" />
           </Datagrid>
         </ReferenceManyField>
       </SimpleShowLayout>

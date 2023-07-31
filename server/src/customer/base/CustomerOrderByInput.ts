@@ -106,6 +106,17 @@ class CustomerOrderByInput {
     nullable: true,
   })
   addressId?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @IsOptional()
+  @IsEnum(SortOrder)
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  customerType?: SortOrder;
 }
 
 export { CustomerOrderByInput as CustomerOrderByInput };
