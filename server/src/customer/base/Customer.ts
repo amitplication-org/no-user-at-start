@@ -11,10 +11,17 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsDate, IsOptional, ValidateNested } from "class-validator";
+import {
+  IsString,
+  IsDate,
+  IsOptional,
+  ValidateNested,
+  IsEnum,
+} from "class-validator";
 import { Type } from "class-transformer";
 import { Order } from "../../order/base/Order";
 import { Address } from "../../address/base/Address";
+import { EnumCustomerCustomerType } from "./EnumCustomerCustomerType";
 
 @ObjectType()
 class Customer {
@@ -103,6 +110,17 @@ class Customer {
   @Type(() => Address)
   @IsOptional()
   address?: Address | null;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumCustomerCustomerType,
+  })
+  @IsEnum(EnumCustomerCustomerType)
+  @IsOptional()
+  @Field(() => EnumCustomerCustomerType, {
+    nullable: true,
+  })
+  customerType?: "Small" | "Big" | "Medium" | null;
 }
 
 export { Customer as Customer };

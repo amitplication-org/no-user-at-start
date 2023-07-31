@@ -179,6 +179,8 @@ export class AddressControllerBase {
             id: true,
           },
         },
+
+        customerType: true,
       },
     });
     if (results === null) {
