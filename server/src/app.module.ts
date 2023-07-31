@@ -14,9 +14,14 @@ import { ServeStaticModule } from "@nestjs/serve-static";
 import { ServeStaticOptionsService } from "./serveStaticOptions.service";
 import { GraphQLModule } from "@nestjs/graphql";
 
+import { ACLModule } from "./auth/acl.module";
+import { AuthModule } from "./auth/auth.module";
+
 @Module({
   controllers: [],
   imports: [
+    ACLModule,
+    AuthModule,
     OrderModule,
     CustomerModule,
     AddressModule,
