@@ -13,10 +13,11 @@ import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { StringFilter } from "../../util/StringFilter";
 import { Type } from "class-transformer";
-import { IsOptional, ValidateNested } from "class-validator";
+import { IsOptional, ValidateNested, IsEnum } from "class-validator";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { OrderListRelationFilter } from "../../order/base/OrderListRelationFilter";
 import { AddressWhereUniqueInput } from "../../address/base/AddressWhereUniqueInput";
+import { EnumCustomerCustomerType } from "./EnumCustomerCustomerType";
 
 @InputType()
 class CustomerWhereInput {
@@ -98,6 +99,17 @@ class CustomerWhereInput {
     nullable: true,
   })
   address?: AddressWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumCustomerCustomerType,
+  })
+  @IsEnum(EnumCustomerCustomerType)
+  @IsOptional()
+  @Field(() => EnumCustomerCustomerType, {
+    nullable: true,
+  })
+  customerType?: "Small" | "Big" | "Medium";
 }
 
 export { CustomerWhereInput as CustomerWhereInput };

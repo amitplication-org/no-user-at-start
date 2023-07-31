@@ -56,6 +56,8 @@ export class CustomerControllerBase {
             id: true,
           },
         },
+
+        customerType: true,
       },
     });
   }
@@ -81,6 +83,8 @@ export class CustomerControllerBase {
             id: true,
           },
         },
+
+        customerType: true,
       },
     });
   }
@@ -107,6 +111,8 @@ export class CustomerControllerBase {
             id: true,
           },
         },
+
+        customerType: true,
       },
     });
     if (result === null) {
@@ -150,6 +156,8 @@ export class CustomerControllerBase {
               id: true,
             },
           },
+
+          customerType: true,
         },
       });
     } catch (error) {
@@ -185,6 +193,8 @@ export class CustomerControllerBase {
               id: true,
             },
           },
+
+          customerType: true,
         },
       });
     } catch (error) {

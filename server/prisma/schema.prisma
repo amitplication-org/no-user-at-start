@@ -21,16 +21,17 @@ model Order {
 }
 
 model Customer {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  firstName String?
-  lastName  String?
-  email     String?
-  phone     String?
-  orders    Order[]
-  address   Address? @relation(fields: [addressId], references: [id])
-  addressId String?
+  id           String                    @id @default(cuid())
+  createdAt    DateTime                  @default(now())
+  updatedAt    DateTime                  @updatedAt
+  firstName    String?
+  lastName     String?
+  email        String?
+  phone        String?
+  orders       Order[]
+  address      Address?                  @relation(fields: [addressId], references: [id])
+  addressId    String?
+  customerType EnumCustomerCustomerType?
 }
 
 model Address {
@@ -53,4 +54,10 @@ model Product {
   itemPrice   Float?
   description String?
   orders      Order[]
+}
+
+enum EnumCustomerCustomerType {
+  Small
+  Big
+  Medium
 }
