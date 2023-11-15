@@ -1,4 +1,4 @@
-datasource postgres {
+datasource db {
   provider = "postgresql"
   url      = env("DB_URL")
 }
@@ -65,6 +65,29 @@ model User {
   username  String   @unique
   password  String
   roles     Json
+}
+
+model Admin {
+  something Int    @unique
+  username  String
+  password  String
+  id        String @id @default(cuid())
+}
+
+model WithIdNamedId {
+  id   Int    @id @default(autoincrement())
+  name String
+}
+
+model WithIdNotNamedId {
+  id   Int    @id @default(autoincrement()) @map("something")
+  name String
+}
+
+model Merge {
+  id      Int    @id @default(autoincrement()) @map("something")
+  mergeId Int    @map("id")
+  name    String
 }
 
 enum EnumCustomerCustomerType {
